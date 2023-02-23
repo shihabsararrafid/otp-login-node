@@ -1,0 +1,19 @@
+.profile_img{
+    width: full;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+}
+.profile_img img{
+   width: 120px;
+   
+}
+.glass{
+   
+background: rgba(237, 228, 228, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(237, 228, 228, 0.3);
+}
