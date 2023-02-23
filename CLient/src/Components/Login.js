@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -59,6 +60,12 @@ const Login = () => {
             />
             Remember Me
           </span>
+        </p>
+        <p className="text-center">
+          Don't have any account?{" "}
+          <Link to="/register" className="font-semibold">
+            Register Now
+          </Link>
         </p>
         <input
           className="w-full rounded-md cursor-pointer bg-secondary2 duration-200  hover:text-secondary2 text-secondary hover:bg-secondary  font-semibold h-[40px] mt-[30px]"
