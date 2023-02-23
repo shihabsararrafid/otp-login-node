@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { GrCircleInformation } from "react-icons/gr";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import swal from "sweetalert";
-
+import profile from "./../Images/profile.jpg";
+import { AiOutlineCamera } from "react-icons/ai";
+import { Link } from "react-router-dom";
 export default function Register() {
   const showInfo = () => {
     swal(
@@ -12,6 +14,11 @@ export default function Register() {
       "info"
     );
   };
+  const [file, setFile] = useState(profile);
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
   const showInfoForPass = () => {
     swal(
       "Information",
@@ -37,6 +44,33 @@ export default function Register() {
         <h1 className="text-3xl text-secondary my-6 font-semibold uppercase text-center">
           Register{" "}
         </h1>
+
+        {/* Taking the input for profile picture */}
+        <div className="flex justify-center my-6">
+          <div className="h-[150px] relative w-[150px]">
+            <img
+              className="rounded-full border-2 border-secondary h-[150px] w-[150px] object-fit"
+              src={file}
+              alt=""
+            />
+            <input
+              type="file"
+              name="file"
+              id="file"
+              onChange={handleChange}
+              accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"
+              className="inputfile w-[.1px] h-[.1px] opacity-0 overflow-hidden absolute z-[-1]"
+            />
+            <label for="file">
+              {" "}
+              <sub className="subs absolute bottom-2 right-4 font-features">
+                <AiOutlineCamera className="text-2xl text-secondary cursor-pointer"></AiOutlineCamera>
+              </sub>
+            </label>
+            <label htmlFor="image"> </label>
+          </div>
+        </div>
+
         {/* Taking Input of First name and last name */}
         <div className="name flex flex-col md:flex-row gap-y-5  justify-between">
           <div className="flex">
@@ -145,6 +179,17 @@ export default function Register() {
               {...register("confirmPass", { required: true })}
             />
           </div>
+        </div>
+        <div className="flex justify-center mt-5">
+          <p>
+            Already Registered?{" "}
+            <Link
+              to="/login"
+              className="text-secondary font-semibold cursor-pointer"
+            >
+              Login
+            </Link>{" "}
+          </p>
         </div>
         <div className="w-full flex justify-center">
           <input
